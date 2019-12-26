@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <style>
-	body{
-	
+	:root{
+		/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
+		--textColor: #366063;
+		
+		--wholePageColor: #F26D5C;
+		--highlightColor: #F26D5C;
+		--sectionColorA:  #AAEBEF;
+		--sectionColorB: #FEFFC6;
+		--headerColor: #FEFFC6;
+		--bubbleColor: #E5E2EF; 
 	}
-	nav{	
-	
+	body{
+		background-color: var(--wholePageColor); 
+		color: var(--textColor); 
+	}
+	header{	
+		background-color: var(--headerColor);
+	}
+	nav{
+		
 	}
 	#image-carousel{
-		
+		background-color: var(--sectionColorA);
 	}
 	#about-me{
-
+		background-color: var(--sectionColorB);
 	}
 	#why-founders-and-coders{
-		
+		background-color: var(--sectionColorA);
 	}
 	#favourite-katas{
-		
+		background-color: var(--sectionColorB);
 	}
 	#codewars-freecodecamp-github{
-		
+		background-color: var(--wholePageColor); 
 	}
-	.para-bubble{
-		
+	.bubble{
+		background-color: var(--bubbleColor);
+
+		width: 200px;
+		border-style: solid;
+		border-color: var(--highlightColor);
 	}
 </style>
 
@@ -96,38 +115,38 @@
 
 		<section id="why-founders-and-coders">
 			<h2> Why Founders and Coders? </h2>
-			<div class="para-bubble">
+			<div class="bubble">
 				<p> 
 					I enjoy writing code and I am driven to learn new programming skills. I enjoy learning skills independently and working with others.
 				</p>
 			</div> 
-			<div class="para-bubble">
+			<div class="bubble">
 				<p>
 					I have ideas of web-based applications I would like to create. One of these is an application to learn music theory on the guitar. Another is an education platform to learn university level Mathematics. Through Founders and Coders I can develop the skills I need to create my own applications.
 				</p>
 			</div> 
-			<div class="para-bubble">
+			<div class="bubble">
 				<p>
 					Founders and Coders gives me an opportunity to learn coding in a short time and to find out if it is something I would like to do as a professional vocation.
 				</p>
 			</div> 
-			<div class="para-bubble">
+			<div class="bubble">
 				<p> 
 					I enjoy working with others and the peer based learning philosophy. In my Mathematics degree I found discussing problems often helped to overcome obstacles in the problem-solving process and to look at the problem from a different perspective. 
 				</p>
 			</div> 
-			<div class="para-bubble">
+			<div class="bubble">
 				<p>
 					I enjoyed the positive community feel at the Monday evening meet-up sessions at Founders and Coders and there is a sense that everyone
 					wants to help each other which is really lovely. 
 				</p>
 			</div> 
-			<div class="para-bubble">
+			<div class="bubble">
 				<p>
 					I would enjoy mentoring students and feel a part of the community through volunteering, particularly as I love teaching.
 				</p>
 			</div>
-			<div class="para-bubble">
+			<div class="bubble">
 				<p> 
 					I respect the non-profit philosophy behind Founders and Coders, and it takes away financial pressure and allows me to focus on the training.
 				</p>
