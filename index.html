@@ -2,7 +2,7 @@
 <style>
 	:root{
 		/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
-		/*add backup colours to extend browser support*/ 
+		/*add backup colours and fonts to extend browser support*/ 
 		--textColor: #366063;
 		
 		--wholePageColor: white;
@@ -12,6 +12,10 @@
 		--sectionColorB: #FEFFC6; 
 		--headerColor: #0F1B1B;  
 		--bubbleColor: #E5E2EF; 
+
+		--h1Font: "Dancing Script";
+		--h2Font: ;
+		--mainTextFont: ;
 	}
 
 	body, figure, h1, h2, p, ul{
@@ -34,13 +38,17 @@
 		display: grid;
 		grid-template-areas: 
 			". header . navbar";
-		grid-template-columns: 1fr 1.5fr 0.5fr 5fr; 
+		grid-template-columns: 1fr 2.5fr 0.5fr 4fr; 
 		grid-template-rows: auto;
 	}
 	h1{
 		grid-area: header;
 		position: relative;
 		left: -25px;
+
+		color: hsl(184, 29.4%, 40%); /*same as text color but with increased lightness*/
+		font-family: var(--h1Font), "Comic Sans MS", cursive, sans-serif;
+		font-size: 2.5em;
 	}
 	nav{
 		grid-area: navbar;
@@ -67,11 +75,12 @@
   		font-size: 1.2em;
 	}
 	footer figure{
-		padding: 10px 25px 10px 25px;
+		padding: 25px 20px 25px 20px;
 	}
 	footer figure:hover{
 		background-color: var(--sectionColorB);
 		border-radius: 20%;
+		padding: 20px;
 	}
 
 
@@ -131,6 +140,7 @@
 		grid-template-rows: 30px auto 80px;
 		grid-column-gap: 10px;
 		justify-items: center;
+		align-items: center;
 	}
 
 	
@@ -228,12 +238,23 @@
 	#codeWars{
 		grid-area: link1;
 	}
-	#gitHub{
+	#freeCodeCamp{
 		grid-area: link2;
 	}
-	#freeCodeCamp{
+	#gitHub{
 		grid-area: link3;
 	}
+	footer img{
+		width: 100px;
+		height: auto;
+	}
+	footer #freeCodeCampLogo{
+		position: relative;
+		left: 12px; /*repositioning required since logo not centering properly for some reason)*/
+	}
+
+
+
 </style>
 
 <html lang="en"> 
@@ -242,6 +263,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css"> <!-- to use google fonts -->
 </head>
 <body>
 	<header> 
@@ -382,22 +404,22 @@
 		<footer id="codeWars-gitHub-freeCodeCamp">
 			<!-- a needs to be linked to various accounts --> 
 			<figure id="codeWars">
-				<a href="#" target="_blank">
-					<img src="#" alt="Codewars logo"/> 
+				<a href="https://www.codewars.com/users/VatsKan/" target="_blank">
+					<img src="codeWars-logo.png" alt="Codewars logo"/> 
 					<figcaption> CodeWars </figcaption>
 				</a> 
 			</figure>
+			<figure id="freeCodeCamp">
+				<a href="https://www.freecodecamp.org/vatskan" target="_blank">
+					<img id="freeCodeCampLogo" src="freeCodeCamp-logo.png" alt="FreeCodeCamp logo"/> 
+					<figcaption> FreeCodeCamp </figcaption>
+				</a> 
+			</figure>
 			<figure id="gitHub">
-				<a href="#" target="_blank">
-					<img src="#" alt="Github logo"/> 
+				<a href="https://github.com/VatsKan/VatsKan.github.io" target="_blank">
+					<img src="GitHub-logo.png" alt="Github logo"/> 
 					<figcaption> GitHub </figcaption>
 				</a>
-			</figure>
-			<figure id="freeCodeCamp">
-				<a href="#" target="_blank">
-					<img src="#" alt="FreeCodeCamp logo"/> 
-					<figcaption> freeCodeCamp </figcaption>
-				</a> 
 			</figure>
 		</footer>
 	</main> 
