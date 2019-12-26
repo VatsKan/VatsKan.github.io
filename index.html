@@ -2,47 +2,215 @@
 <style>
 	:root{
 		/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
+		/*add backup colours to extend browser support*/ 
 		--textColor: #366063;
 		
-		--wholePageColor: #F26D5C;
-		--highlightColor: #F26D5C;
-		--sectionColorA:  #AAEBEF;
-		--sectionColorB: #FEFFC6;
-		--headerColor: #FEFFC6;
+		--wholePageColor: white;
+		--footerColor: #F26D5C;
+		--highlightColor: #F26D5C; 
+		--sectionColorA:  #AAEBEF; 
+		--sectionColorB: #FEFFC6; 
+		--headerColor: #0F1B1B;  
 		--bubbleColor: #E5E2EF; 
 	}
+
+	body, figure, h1, h2, p, ul{
+		margin: 0px;
+	} 
+	p{
+		padding: 8px 15px 8px 15px;
+	} /* keep at top of doc due to overwriting (e.g. in .bubble p) */ 
+	
+
 	body{
 		background-color: var(--wholePageColor); 
 		color: var(--textColor); 
 	}
+
 	header{	
 		background-color: var(--headerColor);
+
+		display: grid;
+		grid-template-areas: 
+			". header . navbar";
+		grid-template-columns: 1fr 1.5fr 0.5fr 5fr; 
+		grid-template-rows: auto;
+	}
+	h1{
+		grid-area: header;
+		position: relative;
+		left: -25px;
 	}
 	nav{
-		
+		grid-area: navbar;
 	}
+	nav a{
+		color: var(--sectionColorA);
+		text-decoration: none;
+  		font-size: 1.2em;
+	}
+	nav a:hover{
+		color: var(--highlightColor);
+  		font-weight: bold;
+	}
+	nav li{
+		float: left;
+		padding: 5px 35px 5px 10px;
+  		
+	}
+	
+	footer a{
+		color: var(--sectionColorA);
+		text-decoration: none;
+		font-weight: bold;
+  		font-size: 1.2em;
+	}
+	footer figure{
+		padding: 10px 25px 10px 25px;
+	}
+	footer figure:hover{
+		background-color: var(--sectionColorB);
+		border-radius: 20%;
+	}
+
+
 	#image-carousel{
 		background-color: var(--sectionColorA);
+
+		display: grid;
+		grid-template-areas: 
+			". leftButton carousel rightButton .";  
+		grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; 
+		grid-template-rows: auto;
 	}
 	#about-me{
 		background-color: var(--sectionColorB);
+		display: grid;
+		grid-template-areas: 
+			". header header ."
+			". text image ."
+			". . . .";
+		grid-template-columns: 1fr 4fr 2fr 1fr; 
+		grid-template-rows: auto auto 15px;
+		grid-column-gap: 10px;
 	}
 	#why-founders-and-coders{
 		background-color: var(--sectionColorA);
+
+		display: grid;
+		grid-template-areas: 
+			". header header header ."
+			". bub bub bub ."
+			". . . . .";
+		grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
+		grid-template-rows: auto auto 15px;
+		grid-column-gap: 10px;
 	}
 	#favourite-katas{
 		background-color: var(--sectionColorB);
+
+		display: grid;
+		grid-template-areas: 
+			". header header header ."
+			". explain explain explain ."; 
+		grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
+		grid-template-rows: auto auto 15px;
+		grid-column-gap: 10px;
 	}
-	#codewars-freecodecamp-github{
-		background-color: var(--wholePageColor); 
+	footer{
+		background-color: var(--footerColor);
+
+		display: grid;
+		grid-template-areas: 
+			". . . . ."
+			". link1 link2 link3 ."
+			". . . . .";
+		grid-template-columns: 1.7fr 2fr 2fr 2fr 1.7fr; 
+		grid-template-rows: 30px auto 80px;
+		grid-column-gap: 10px;
+		justify-items: center;
+	}
+
+	
+	h2{
+		grid-area: header;
+		position: relative;
+		left: -25px;
+	} /*note that this code affects position of all h2 elements
+	and in particular the grid-area: header works as it is defined similarly
+	in each of the sections by the grid-template-areas: ". header etc.";*/
+
+
+	button{
+		background-color: var(--sectionColorA);
+		border-color: var(--textColor);
+		border-width: 3px;
+	}
+	#carousel{
+		grid-area: carousel;
+	}
+	#leftButton{
+		grid-area: leftButton;
+	}
+	#rightButton{
+		grid-area: rightButton;
+	}
+
+	
+	#about-me img{
+		border-style: solid;
+		grid-area: image;
+		justif-self: center;
+		align-self: start;
+	}
+	#about-me-text{
+		border-style: solid;
+		grid-area: text;
+	}
+
+	
+	#bubbles{
+		grid-area: bub;
+		display: flex;
 	}
 	.bubble{
 		background-color: var(--bubbleColor);
 
 		width: 200px;
+		padding: 20px;
+		border-radius: 20px;
+		border-width: 2px;
 		border-style: solid;
-		border-color: var(--highlightColor);
+
+		flex-direction: row;
+		justify-content: space-between; /* not working as i want it to */ 
+		flex-wrap: wrap; /* not working as i want it to --need to fix*/ 
 	}
+	.bubble p{
+		width: auto; /* check */ 
+		padding: 0px;
+	}
+
+
+	#favourite-katas p{
+		grid-area: explain;
+	}
+
+	footer figcaption{
+		text-align: center; 
+	}
+	#codeWars{
+		grid-area: link1;
+	}
+	#gitHub{
+		grid-area: link2;
+	}
+	#freeCodeCamp{
+		grid-area: link3;
+	}
+
+
+
 </style>
 
 <html lang="en"> 
@@ -58,99 +226,111 @@
 		<nav>
 			<ul>
 				<li> <a href="#about-me">About Me</a> </li> 
-				<li> <a href="#why-founders-and-coders">Why Founders and Coders?</a> </li>
+				<li> <a href="#why-founders-and-coders">Why Founders?</a> </li>
 				<li> <a href="#favourite-katas">Favourite Katas</a> </li> 
-				<li> <a href="#codewars-freecodecamp-github">Codewars, GitHub and FreeCodeCamp</a></li>
+				<li> <a href="#codeWars-gitHub-freeCodeCamp">Links</a></li>
 			</ul>
 		</nav>
 	</header> 
 	<main>
 		<section id="image-carousel">
-			<figure> 
-				<img src="#" alt="Playing the guitar">
-				<br>
-				<figcaption>
-					Enjoying playing some music.
-				</figcaption>
-			</figure>
-			<figure> 
-				<img src="#" alt="Skiing in New Zealand">
-				<br>
-				<figcaption>
-					Skiing in New Zealand.
-				</figcaption>
-			</figure>
-			<figure> 
-				<img src="#" alt="I visit Milford Sounds, New Zealand">
-				<br>
-				<figcaption>
-					Visit to the beautiful Milford Sounds, New Zealand.
-				</figcaption>
-			</figure>
-			<figure> 
-				<img src="#" alt="Mathematics"> <!-- insert images--> 
-				<br>
-				<figcaption>
-					Having fun with Maths. 
-				</figcaption>
-			</figure>
+			<button id="leftButton">
+				PREV
+			</button>
+			<div id="carousel">
+				<figure> 
+					<img src="#" alt="Playing the guitar">
+					<br>
+					<figcaption>
+						Enjoying playing some music.
+					</figcaption>
+				</figure>
+				<figure> 
+					<img src="#" alt="Skiing in New Zealand">
+					<br>
+					<figcaption>
+						Skiing in New Zealand.
+					</figcaption>
+				</figure>
+				<figure> 
+					<img src="#" alt="I visit Milford Sounds, New Zealand">
+					<br>
+					<figcaption>
+						Visit to the beautiful Milford Sounds, New Zealand.
+					</figcaption>
+				</figure>
+				<figure> 
+					<img src="#" alt="Mathematics"> <!-- insert images--> 
+					<br>
+					<figcaption>
+						Having fun with Maths. 
+					</figcaption>
+				</figure>
+			</div>
+			<button id="rightButton">
+				NEXT
+			</button> 
 		</section> 
 
 		<section id="about-me">
 			<h2> About Me </h2> 
 			<img src="#" alt="Picture of Vatsal"> <!-- insert image url--> 
-			<p>
-				My university education is in Mathematics (First Class BSc with Hons) after which I taught Mathematics at secondary schools. I now wish to get into coding, as I love the logic of programming and satisfaction that comes from problem-solving. I particularly enjoy spending
-				time trying to figure out challenging problems and the satisfaction of making progress and finally arriving at a solution that works, as well as 
-				thinking about if I could make the algorthms I use more efficient or write better and cleaner code.  
-			</p>
-			<p> 
-				My previous experience in coding is an "Introduction to C++" course I did at university, and I had also read the "Learning Web Design" book by J.N. Robbins in an attempt to create a website for my driving instructor a few years ago. These first experiences in coding showed me that I do have a real interest in software development and that I wish to learn more. I also learned about the theory of Cryptography in my Mathematics degree and I am interested to learn how security is applied in real-life software applications. I marvel at how programming is so present in the modern world and in its multifarious applications to help society and I wish to help others by creating useful software. 
-			</p>
-			<p>
-				I also love to play sports, meditate, and play classical guitar. I did
-				a ski instructor course recently in New Zealand which was a lot of fun, and enjoyed the natural scenery of New Zealand. 
-			</p>
+			<div id="about-me-text">
+				<p>
+					My university education is in Mathematics (First Class BSc with Hons) after which I taught Mathematics at secondary schools. I now wish to get into coding, as I love the logic of programming and satisfaction that comes from problem-solving. I particularly enjoy spending
+					time trying to figure out challenging problems and the satisfaction of making progress and finally arriving at a solution that works, as well as 
+					thinking about if I could make the algorthms I use more efficient or write better and cleaner code.  
+				</p>
+				<p> 
+					My previous experience in coding is an "Introduction to C++" course I did at university, and I had also read the "Learning Web Design" book by J.N. Robbins in an attempt to create a website for my driving instructor a few years ago. These first experiences in coding showed me that I do have a real interest in software development and that I wish to learn more. I also learned about the theory of Cryptography in my Mathematics degree and I am interested to learn how security is applied in real-life software applications. I marvel at how programming is so present in the modern world and in its multifarious applications to help society and I wish to help others by creating useful software. 
+				</p>
+				<p>
+					I also love to play sports, meditate, and play classical guitar. I did
+					a ski instructor course recently in New Zealand which was a lot of fun, and enjoyed the natural scenery of New Zealand. 
+				</p>
+			</div>
 		</section>
 
 		<section id="why-founders-and-coders">
 			<h2> Why Founders and Coders? </h2>
-			<div class="bubble">
-				<p> 
-					I enjoy writing code and I am driven to learn new programming skills. I enjoy learning skills independently and working with others.
-				</p>
-			</div> 
-			<div class="bubble">
-				<p>
-					I have ideas of web-based applications I would like to create. One of these is an application to learn music theory on the guitar. Another is an education platform to learn university level Mathematics. Through Founders and Coders I can develop the skills I need to create my own applications.
-				</p>
-			</div> 
-			<div class="bubble">
-				<p>
-					Founders and Coders gives me an opportunity to learn coding in a short time and to find out if it is something I would like to do as a professional vocation.
-				</p>
-			</div> 
-			<div class="bubble">
-				<p> 
-					I enjoy working with others and the peer based learning philosophy. In my Mathematics degree I found discussing problems often helped to overcome obstacles in the problem-solving process and to look at the problem from a different perspective. 
-				</p>
-			</div> 
-			<div class="bubble">
-				<p>
-					I enjoyed the positive community feel at the Monday evening meet-up sessions at Founders and Coders and there is a sense that everyone
-					wants to help each other which is really lovely. 
-				</p>
-			</div> 
-			<div class="bubble">
-				<p>
-					I would enjoy mentoring students and feel a part of the community through volunteering, particularly as I love teaching.
-				</p>
+			<div id="bubbles">
+				<div class="bubble">
+					<p> 
+						I enjoy writing code and I am driven to learn new programming skills. I enjoy learning skills independently and working with others.
+					</p>
+				</div> 
+				<div class="bubble">
+					<p>
+						I have ideas of web-based applications I would like to create. One of these is an application to learn music theory on the guitar. Another is an education platform to learn university level Mathematics. Through Founders and Coders I can develop the skills I need to create my own applications.
+					</p>
+				</div> 
+				<div class="bubble">
+					<p>
+						Founders and Coders gives me an opportunity to learn coding in a short time and to find out if it is something I would like to do as a professional vocation.
+					</p>
+				</div> 
+				<div class="bubble">
+					<p> 
+						I enjoy working with others and the peer based learning philosophy. In my Mathematics degree I found discussing problems often helped to overcome obstacles in the problem-solving process and to look at the problem from a different perspective. 
+					</p>
+				</div> 
+				<div class="bubble">
+					<p>
+						I enjoyed the positive community feel at the Monday evening meet-up sessions at Founders and Coders and there is a sense that everyone
+						wants to help each other which is really lovely. 
+					</p>
+				</div> 
+				<div class="bubble">
+					<p>
+						I would enjoy mentoring students and feel a part of the community through volunteering, particularly as I love teaching.
+					</p>
+				</div>
+				<div class="bubble">
+					<p> 
+						I respect the non-profit philosophy behind Founders and Coders, and it takes away financial pressure and allows me to focus on the training.
+					</p>
+				</div> 
 			</div>
-			<div class="bubble">
-				<p> 
-					I respect the non-profit philosophy behind Founders and Coders, and it takes away financial pressure and allows me to focus on the training.
-				</p>
-			</div> 
 		</section>
 
 		<section id="favourite-katas">
@@ -160,11 +340,26 @@
 			perhaps with two vertically divided sections--on left explanation in <p>, on right the kata--> 
 		</section>
 
-		<footer id="codewars-freecodecamp-github">
-			<a href="#" target="_blank"><img src="#" alt="Codewars logo"/> </a> 
+		<footer id="codeWars-gitHub-freeCodeCamp">
 			<!-- a needs to be linked to various accounts --> 
-			<a href="#" target="_blank"><img src="#" alt="Github logo"/> </a> 
-			<a href="#" target="_blank"><img src="#" alt="FreeCodeCamp logo"/> </a> 
+			<figure id="codeWars">
+				<a href="#" target="_blank">
+					<img src="#" alt="Codewars logo"/> 
+					<figcaption> CodeWars </figcaption>
+				</a> 
+			</figure>
+			<figure id="gitHub">
+				<a href="#" target="_blank">
+					<img src="#" alt="Github logo"/> 
+					<figcaption> GitHub </figcaption>
+				</a>
+			</figure>
+			<figure id="freeCodeCamp">
+				<a href="#" target="_blank">
+					<img src="#" alt="FreeCodeCamp logo"/> 
+					<figcaption> freeCodeCamp </figcaption>
+				</a> 
+			</figure>
 		</footer>
 	</main> 
 </body>
