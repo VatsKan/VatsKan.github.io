@@ -16,6 +16,7 @@
 
 	body, figure, h1, h2, p, ul{
 		margin: 0px;
+		padding: 0px;
 	} 
 	p{
 		padding: 8px 15px 8px 15px;
@@ -80,7 +81,8 @@
 		display: grid;
 		grid-template-areas: 
 			". leftButton carousel rightButton .";  
-		grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; 
+		/*grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; */
+		grid-template-columns: 0.4fr 0.5fr 60vw 0.5fr 0.4fr; 
 		grid-template-rows: auto;
 	}
 	#about-me{
@@ -149,11 +151,35 @@
 	#carousel{
 		grid-area: carousel;
 	}
+	.carousel-slide{
+		display: flex;
+		width: 100%;
+		height: 550px;
+		overflow: hidden;
+
+	}
+	.carousel-slide img{
+		height: 550px;
+		z-index: 1; 
+		display: block;
+	}
 	#leftButton{
 		grid-area: leftButton;
 	}
 	#rightButton{
 		grid-area: rightButton;
+	}
+	#carousel figcaption{
+		background-color: rgba(15, 27, 27, 0.7);  /*i.e. #0F1B1B same as header with adjusted opacity */
+		color: var(--sectionColorA);
+		font-style: italic;
+		text-align: center;
+
+		height: 50px;
+		width: auto;
+		position: relative;
+		bottom: 50px;
+		z-index: 2;
 	}
 
 	
@@ -208,9 +234,6 @@
 	#freeCodeCamp{
 		grid-area: link3;
 	}
-
-
-
 </style>
 
 <html lang="en"> 
@@ -238,34 +261,50 @@
 				PREV
 			</button>
 			<div id="carousel">
-				<figure> 
-					<img src="#" alt="Playing the guitar">
-					<br>
-					<figcaption>
-						Enjoying playing some music.
-					</figcaption>
-				</figure>
-				<figure> 
-					<img src="#" alt="Skiing in New Zealand">
-					<br>
-					<figcaption>
-						Skiing in New Zealand.
-					</figcaption>
-				</figure>
-				<figure> 
-					<img src="#" alt="I visit Milford Sounds, New Zealand">
-					<br>
-					<figcaption>
-						Visit to the beautiful Milford Sounds, New Zealand.
-					</figcaption>
-				</figure>
-				<figure> 
-					<img src="#" alt="Mathematics"> <!-- insert images--> 
-					<br>
-					<figcaption>
-						Having fun with Maths. 
-					</figcaption>
-				</figure>
+				<div class="carousel-slide">
+					<figure> 
+						<img id="lastClone" src="image-4.jpg" alt="Mathematics"> <!-- insert images--> 
+						<br>
+						<figcaption>
+							Having fun with Maths. 
+						</figcaption>
+					</figure>
+					<figure> 
+						<img src="image-1.jpg" alt="Playing the guitar">
+						<br>
+						<figcaption>
+							Enjoying playing some music.
+						</figcaption>
+					</figure>
+					<figure> 
+						<img src="image-2.jpg" alt="Skiing in New Zealand">
+						<br>
+						<figcaption>
+							Skiing in New Zealand.
+						</figcaption>
+					</figure>
+					<figure> 
+						<img src="image-3.jpg" alt="I visit Milford Sounds, New Zealand">
+						<br>
+						<figcaption>
+							Visit to the beautiful Milford Sounds, New Zealand.
+						</figcaption>
+					</figure>
+					<figure> 
+						<img src="image-4.jpg" alt="Mathematics"> <!-- insert images--> 
+						<br>
+						<figcaption>
+							Having fun with Maths. 
+						</figcaption>
+					</figure>
+					<figure> 
+						<img id="firstClone" src="image-1.jpg" alt="Playing the guitar">
+						<br>
+						<figcaption>
+							Enjoying playing some music.
+						</figcaption>
+					</figure>
+				</div>
 			</div>
 			<button id="rightButton">
 				NEXT
