@@ -1,0 +1,312 @@
+
+:root{
+	/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
+	/*add backup colours and fonts to extend browser support*/ 
+	--textColor: #366063;
+	
+	--wholePageColor: white;
+	--footerColor: #F26D5C;
+	--highlightColor: #F26D5C; 
+	--sectionColorA:  #AAEBEF; 
+	--sectionColorB: #FEFFC6; 
+	--headerColor: #0F1B1B;  
+	--bubbleColor: rgba(188, 186, 196, 0.7); 
+
+	--h1Font: "Dancing Script";
+}
+
+body, figure, h1, h2, p, ul{
+	margin: 0px;
+	padding: 0px;
+} 
+p{
+	padding: 15px 15px 8px 15px;
+} /* keep at top of doc due to overwriting (e.g. in .bubble p) */ 
+
+
+body{
+	background-color: var(--wholePageColor); 
+	color: var(--textColor); 
+}
+
+header{	
+	background-color: var(--headerColor);
+
+	display: grid;
+	grid-template-areas: 
+		". header . navbar";
+	grid-template-columns: 1fr 2.5fr 0.5fr 4fr; 
+	grid-template-rows: auto;
+}
+h1{
+	grid-area: header;
+	position: relative;
+	left: -25px;
+
+	color: hsl(184, 29.4%, 40%); /*same as text color but with increased lightness*/
+	font-family: var(--h1Font), "Comic Sans MS", cursive, sans-serif;
+	font-size: 2.5em;
+}
+nav{
+	grid-area: navbar;
+}
+nav a{
+	color: var(--sectionColorA);
+	text-decoration: none;
+		font-size: 1.2em;
+}
+nav a:hover{
+	color: var(--highlightColor);
+		font-weight: bold;
+}
+nav li{
+	float: left;
+	padding: 5px 35px 5px 10px;
+		
+}
+
+footer a{
+	color: var(--sectionColorA);
+	text-decoration: none;
+	font-weight: bold;
+		font-size: 1.2em;
+}
+footer figure{
+	padding: 25px 20px 25px 20px;
+}
+footer figure:hover{
+	background-color: var(--sectionColorB);
+	border-radius: 20%;
+	padding: 20px;
+}
+
+
+#image-carousel{
+	background-color: var(--sectionColorA);
+
+	display: grid;
+	grid-template-areas: 
+		". leftButton carousel rightButton .";  
+	/*grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; */
+	grid-template-columns: 0.4fr 0.5fr 60vw 0.5fr 0.4fr; 
+	grid-template-rows: auto;
+}
+#about-me{
+	background-color: var(--sectionColorB);
+	display: grid;
+	grid-template-areas: 
+		". header header ."
+		". text image ."
+		". . . .";
+	grid-template-columns: 1fr 4.5fr 1.5fr 1fr; 
+	grid-template-rows: auto auto 15px;
+	grid-column-gap: 10px;
+}
+#why-founders-and-coders{
+	background-color: var(--sectionColorA);
+
+	display: grid;
+	grid-template-areas: 
+		". header ."
+		". bub .";
+	grid-template-columns: 1fr 6fr 1fr; 
+	grid-template-rows: auto auto;
+	grid-column-gap: 10px;
+
+	margin-bottom: -115px;
+}
+#favourite-katas{
+	background-color: var(--sectionColorB);
+
+	display: grid;
+	grid-template-areas: 
+		". header header header ."
+		". explain explain explain ."; 
+	grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
+	grid-template-rows: auto auto 15px;
+	grid-column-gap: 10px;
+}
+footer{
+	background-color: var(--footerColor);
+
+	display: grid;
+	grid-template-areas: 
+		". . . . ."
+		". link1 link2 link3 ."
+		". . . . .";
+	grid-template-columns: 1.7fr 2fr 2fr 2fr 1.7fr; 
+	grid-template-rows: 30px auto 80px;
+	grid-column-gap: 10px;
+	justify-items: center;
+	align-items: center;
+}
+
+
+h2{
+	grid-area: header;
+	position: relative;
+	left: -25px;
+} /*note that this code affects position of all h2 elements
+and in particular the 'grid-area: header' works in multiple sections as it is defined 
+in each of the sections by the grid-template-areas: "header" */
+
+
+button{
+	background-color: var(--sectionColorA);
+	border-color: var(--textColor);
+	border-width: 3px;
+}
+#carousel{
+	grid-area: carousel;
+}
+.carousel-slide{
+	display: flex;
+	width: 100%;
+	height: 550px;
+	overflow: hidden;
+
+}
+.carousel-slide img{
+	height: 550px;
+	z-index: 1; 
+	display: block;
+}
+#leftButton{
+	grid-area: leftButton;
+}
+#rightButton{
+	grid-area: rightButton;
+}
+#carousel figcaption{
+	background-color: rgba(15, 27, 27, 0.7);  /*i.e. #0F1B1B same as header with adjusted opacity */
+	color: var(--sectionColorA);
+	font-style: italic;
+	text-align: center;
+
+	height: 50px;
+	width: auto;
+	position: relative;
+	bottom: 50px;
+	z-index: 2;
+}
+
+
+#about-me img{
+	border-style: solid;
+	grid-area: image;
+	justif-self: center;
+	align-self: start;
+
+	width: 100%;
+	height: auto;
+}
+#about-me-text{
+	border-style: solid;
+	grid-area: text;
+}
+
+
+#bubbles{
+	grid-area: bub;
+
+	position: relative;
+	bottom: 100px;
+	
+	display: grid;
+	grid-template-areas:
+	". bub1 . bub2 ."
+	"bub3 . bub4 . bub5"
+	". bub6 . bub7 .";
+	grid-template-columns: 1fr 1fr 1.2fr 1fr 1fr;
+	grid-template-rows: auto auto auto;
+	justify-items: center;
+	align-items: top;
+}
+#bubbles p{
+	background-color: var(--bubbleColor);
+
+	padding: 20px;
+	border-radius: 20px;
+	border-width: 2px;
+	border-style: solid;
+
+}
+#bub1{
+	grid-area: bub1;
+	position: relative;
+	left: 12%;
+	top: 70%;
+	z-index: 1;
+}
+#bub2{
+	grid-area: bub2;
+	position: relative;
+	right: 8%;
+	top: 68%;
+	z-index: 1;
+}
+#bub3{
+	grid-area: bub3;
+	position: relative;
+	left: 20%;
+	top: 15%;
+	z-index: 0;
+}
+#bub4{
+	grid-area: bub4;
+	z-index: 2;
+
+	text-align: center;
+}
+#bub5{
+	grid-area: bub5;
+	position: relative;
+	right: 15%;
+	top: 20%;
+	z-index: 0;
+}
+#bub6{
+	grid-area: bub6;
+	position: relative;
+	left: 10%;
+	bottom: 40%;
+	z-index: 0;
+}
+#bub7{
+	grid-area: bub7;
+	position: relative;
+	right: 8%;
+	bottom: 40%;
+	z-index: 0;
+}
+.bubRight{
+	text-align: right;
+}
+
+
+#favourite-katas p{
+	grid-area: explain;
+}
+
+
+footer figcaption{
+	text-align: center; 
+}
+#codeWars{
+	grid-area: link1;
+}
+#freeCodeCamp{
+	grid-area: link2;
+}
+#gitHub{
+	grid-area: link3;
+}
+footer img{
+	width: 100px;
+	height: auto;
+}
+footer #freeCodeCampLogo{
+	position: relative;
+	left: 12px; /*small repositioning adjustment was required since logo was not centering properly for some reason*/
+}
+
