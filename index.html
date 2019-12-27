@@ -1,261 +1,4 @@
 <!DOCTYPE html>
-<style>
-	:root{
-		/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
-		/*add backup colours and fonts to extend browser support*/ 
-		--textColor: #366063;
-		
-		--wholePageColor: white;
-		--footerColor: #F26D5C;
-		--highlightColor: #F26D5C; 
-		--sectionColorA:  #AAEBEF; 
-		--sectionColorB: #FEFFC6; 
-		--headerColor: #0F1B1B;  
-		--bubbleColor: #E5E2EF; 
-
-		--h1Font: "Dancing Script";
-		--h2Font: ;
-		--mainTextFont: ;
-	}
-
-	body, figure, h1, h2, p, ul{
-		margin: 0px;
-		padding: 0px;
-	} 
-	p{
-		padding: 8px 15px 8px 15px;
-	} /* keep at top of doc due to overwriting (e.g. in .bubble p) */ 
-	
-
-	body{
-		background-color: var(--wholePageColor); 
-		color: var(--textColor); 
-	}
-
-	header{	
-		background-color: var(--headerColor);
-
-		display: grid;
-		grid-template-areas: 
-			". header . navbar";
-		grid-template-columns: 1fr 2.5fr 0.5fr 4fr; 
-		grid-template-rows: auto;
-	}
-	h1{
-		grid-area: header;
-		position: relative;
-		left: -25px;
-
-		color: hsl(184, 29.4%, 40%); /*same as text color but with increased lightness*/
-		font-family: var(--h1Font), "Comic Sans MS", cursive, sans-serif;
-		font-size: 2.5em;
-	}
-	nav{
-		grid-area: navbar;
-	}
-	nav a{
-		color: var(--sectionColorA);
-		text-decoration: none;
-  		font-size: 1.2em;
-	}
-	nav a:hover{
-		color: var(--highlightColor);
-  		font-weight: bold;
-	}
-	nav li{
-		float: left;
-		padding: 5px 35px 5px 10px;
-  		
-	}
-	
-	footer a{
-		color: var(--sectionColorA);
-		text-decoration: none;
-		font-weight: bold;
-  		font-size: 1.2em;
-	}
-	footer figure{
-		padding: 25px 20px 25px 20px;
-	}
-	footer figure:hover{
-		background-color: var(--sectionColorB);
-		border-radius: 20%;
-		padding: 20px;
-	}
-
-
-	#image-carousel{
-		background-color: var(--sectionColorA);
-
-		display: grid;
-		grid-template-areas: 
-			". leftButton carousel rightButton .";  
-		/*grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; */
-		grid-template-columns: 0.4fr 0.5fr 60vw 0.5fr 0.4fr; 
-		grid-template-rows: auto;
-	}
-	#about-me{
-		background-color: var(--sectionColorB);
-		display: grid;
-		grid-template-areas: 
-			". header header ."
-			". text image ."
-			". . . .";
-		grid-template-columns: 1fr 4fr 2fr 1fr; 
-		grid-template-rows: auto auto 15px;
-		grid-column-gap: 10px;
-	}
-	#why-founders-and-coders{
-		background-color: var(--sectionColorA);
-
-		display: grid;
-		grid-template-areas: 
-			". header header header ."
-			". bub bub bub ."
-			". . . . .";
-		grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
-		grid-template-rows: auto auto 15px;
-		grid-column-gap: 10px;
-	}
-	#favourite-katas{
-		background-color: var(--sectionColorB);
-
-		display: grid;
-		grid-template-areas: 
-			". header header header ."
-			". explain explain explain ."; 
-		grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
-		grid-template-rows: auto auto 15px;
-		grid-column-gap: 10px;
-	}
-	footer{
-		background-color: var(--footerColor);
-
-		display: grid;
-		grid-template-areas: 
-			". . . . ."
-			". link1 link2 link3 ."
-			". . . . .";
-		grid-template-columns: 1.7fr 2fr 2fr 2fr 1.7fr; 
-		grid-template-rows: 30px auto 80px;
-		grid-column-gap: 10px;
-		justify-items: center;
-		align-items: center;
-	}
-
-	
-	h2{
-		grid-area: header;
-		position: relative;
-		left: -25px;
-	} /*note that this code affects position of all h2 elements
-	and in particular the grid-area: header works as it is defined similarly
-	in each of the sections by the grid-template-areas: ". header etc.";*/
-
-
-	button{
-		background-color: var(--sectionColorA);
-		border-color: var(--textColor);
-		border-width: 3px;
-	}
-	#carousel{
-		grid-area: carousel;
-	}
-	.carousel-slide{
-		display: flex;
-		width: 100%;
-		height: 550px;
-		overflow: hidden;
-
-	}
-	.carousel-slide img{
-		height: 550px;
-		z-index: 1; 
-		display: block;
-	}
-	#leftButton{
-		grid-area: leftButton;
-	}
-	#rightButton{
-		grid-area: rightButton;
-	}
-	#carousel figcaption{
-		background-color: rgba(15, 27, 27, 0.7);  /*i.e. #0F1B1B same as header with adjusted opacity */
-		color: var(--sectionColorA);
-		font-style: italic;
-		text-align: center;
-
-		height: 50px;
-		width: auto;
-		position: relative;
-		bottom: 50px;
-		z-index: 2;
-	}
-
-	
-	#about-me img{
-		border-style: solid;
-		grid-area: image;
-		justif-self: center;
-		align-self: start;
-	}
-	#about-me-text{
-		border-style: solid;
-		grid-area: text;
-	}
-
-	
-	#bubbles{
-		grid-area: bub;
-		display: flex;
-	}
-	.bubble{
-		background-color: var(--bubbleColor);
-
-		width: 200px;
-		padding: 20px;
-		border-radius: 20px;
-		border-width: 2px;
-		border-style: solid;
-
-		flex-direction: row;
-		justify-content: space-between; /* not working as i want it to */ 
-		flex-wrap: wrap; /* not working as i want it to --need to fix*/ 
-	}
-	.bubble p{
-		width: auto; /* check */ 
-		padding: 0px;
-	}
-
-
-	#favourite-katas p{
-		grid-area: explain;
-	}
-
-	footer figcaption{
-		text-align: center; 
-	}
-	#codeWars{
-		grid-area: link1;
-	}
-	#freeCodeCamp{
-		grid-area: link2;
-	}
-	#gitHub{
-		grid-area: link3;
-	}
-	footer img{
-		width: 100px;
-		height: auto;
-	}
-	footer #freeCodeCampLogo{
-		position: relative;
-		left: 12px; /*repositioning required since logo not centering properly for some reason)*/
-	}
-
-
-
-</style>
 
 <html lang="en"> 
 <head>
@@ -264,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" media="screen" href="main.css" /> 
 	<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet" type="text/css"> <!-- to use google fonts -->
+	<script src="script.js" type="text/javascript"></script>
 </head>
 <body>
 	<header> 
@@ -335,7 +79,7 @@
 
 		<section id="about-me">
 			<h2> About Me </h2> 
-			<img src="#" alt="Picture of Vatsal"> <!-- insert image url--> 
+			<img src="photo-of-Vatsal.jpg" alt="Picture of Vatsal"> 
 			<div id="about-me-text">
 				<p>
 					My university education is in Mathematics (First Class BSc with Hons) after which I taught Mathematics at secondary schools. I now wish to get into coding, as I love the logic of programming and satisfaction that comes from problem-solving. I particularly enjoy spending
@@ -355,38 +99,38 @@
 		<section id="why-founders-and-coders">
 			<h2> Why Founders and Coders? </h2>
 			<div id="bubbles">
-				<div class="bubble">
+				<div id="bub1">
 					<p> 
 						I enjoy writing code and I am driven to learn new programming skills. I enjoy learning skills independently and working with others.
 					</p>
 				</div> 
-				<div class="bubble">
-					<p>
-						I have ideas of web-based applications I would like to create. One of these is an application to learn music theory on the guitar. Another is an education platform to learn university level Mathematics. Through Founders and Coders I can develop the skills I need to create my own applications.
-					</p>
-				</div> 
-				<div class="bubble">
+				<div id="bub2" class="bubRight">
 					<p>
 						Founders and Coders gives me an opportunity to learn coding in a short time and to find out if it is something I would like to do as a professional vocation.
 					</p>
 				</div> 
-				<div class="bubble">
+				<div id="bub3">
 					<p> 
-						I enjoy working with others and the peer based learning philosophy. In my Mathematics degree I found discussing problems often helped to overcome obstacles in the problem-solving process and to look at the problem from a different perspective. 
+						I enjoy peer based learning. In my Mathematics degree I found discussing problems often helped to overcome obstacles in the problem-solving process and to look at the problem from a different perspective. 
 					</p>
 				</div> 
-				<div class="bubble">
+				<div id="bub4">
+					<p>
+						I have ideas of web-based applications I would like to create. One of these is an application to learn music theory on the guitar. Another is an education platform to learn university level Mathematics. Through Founders and Coders I can develop the skills I need to create my own applications.
+					</p>
+				</div> 
+				<div id="bub5" class="bubRight">
 					<p>
 						I enjoyed the positive community feel at the Monday evening meet-up sessions at Founders and Coders and there is a sense that everyone
 						wants to help each other which is really lovely. 
 					</p>
 				</div> 
-				<div class="bubble">
+				<div id="bub6">
 					<p>
 						I would enjoy mentoring students and feel a part of the community through volunteering, particularly as I love teaching.
 					</p>
 				</div>
-				<div class="bubble">
+				<div id="bub7" class="bubRight">
 					<p> 
 						I respect the non-profit philosophy behind Founders and Coders, and it takes away financial pressure and allows me to focus on the training.
 					</p>
@@ -402,22 +146,21 @@
 		</section>
 
 		<footer id="codeWars-gitHub-freeCodeCamp">
-			<!-- a needs to be linked to various accounts --> 
 			<figure id="codeWars">
 				<a href="https://www.codewars.com/users/VatsKan/" target="_blank">
-					<img src="VatsKan.github.io/codeWars-logo.png" alt="Codewars logo"/> 
+					<img src="codeWars-logo.png" alt="Codewars logo"/> 
 					<figcaption> CodeWars </figcaption>
 				</a> 
 			</figure>
 			<figure id="freeCodeCamp">
 				<a href="https://www.freecodecamp.org/vatskan" target="_blank">
-					<img id="freeCodeCampLogo" src="VatsKan.github.io/freeCodeCamp-logo.png" alt="FreeCodeCamp logo"/> 
+					<img id="freeCodeCampLogo" src="freeCodeCamp-logo.png" alt="FreeCodeCamp logo"/> 
 					<figcaption> FreeCodeCamp </figcaption>
 				</a> 
 			</figure>
 			<figure id="gitHub">
 				<a href="https://github.com/VatsKan/VatsKan.github.io" target="_blank">
-					<img src="VatsKan.github.io/GitHub-logo.png" alt="Github logo"/> 
+					<img src="GitHub-logo.png" alt="Github logo"/> 
 					<figcaption> GitHub </figcaption>
 				</a>
 			</figure>
