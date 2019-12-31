@@ -1,7 +1,7 @@
-
 :root{
 	/* #2C2A2A, #E5E2EF, https://coolors.co/f26d5c-feffc6-aaebef-366063-bcbac4 */ 
-	/*add backup colours and fonts to extend browser support*/ 
+	/*add backup colours and fonts to extend browser support*/
+	/*create backups for when variables are used to extend browser support*/  
 	--textColor: #366063;
 	
 	--wholePageColor: white;
@@ -14,6 +14,7 @@
 
 	--h1Font: "Dancing Script";
 }
+
 
 body, figure, h1, h2, p, ul{
 	margin: 0px;
@@ -37,6 +38,13 @@ header{
 		". header . navbar";
 	grid-template-columns: 1fr 2.5fr 0.5fr 4fr; 
 	grid-template-rows: auto;
+
+	/*below css makes nav bar sticky....may need to change*/
+	position: sticky; 
+	top: 0px; 
+	width: 100%;
+	z-index: 100;
+	opacity: 0.95;
 }
 h1{
 	grid-area: header;
@@ -44,7 +52,7 @@ h1{
 	left: -25px;
 
 	color: hsl(184, 29.4%, 40%); /*same as text color but with increased lightness*/
-	font-family: var(--h1Font), "Comic Sans MS", cursive, sans-serif;
+	font-family: var(--h1Font), cursive, serif;
 	font-size: 2.5em;
 }
 nav{
@@ -57,7 +65,7 @@ nav a{
 }
 nav a:hover{
 	color: var(--highlightColor);
-		font-weight: bold;
+	font-weight: bold;
 }
 nav li{
 	float: left;
@@ -69,7 +77,7 @@ footer a{
 	color: var(--sectionColorA);
 	text-decoration: none;
 	font-weight: bold;
-		font-size: 1.2em;
+	font-size: 1.2em;
 }
 footer figure{
 	padding: 25px 20px 25px 20px;
@@ -131,13 +139,13 @@ footer{
 
 	display: grid;
 	grid-template-areas: 
-		". . . . ."
+		". header . . ."
 		". link1 link2 link3 ."
 		". . . . .";
 	grid-template-columns: 1.7fr 2fr 2fr 2fr 1.7fr; 
+	grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
 	grid-template-rows: 30px auto 80px;
 	grid-column-gap: 10px;
-	justify-items: center;
 	align-items: center;
 }
 
@@ -158,24 +166,27 @@ button{
 }
 #carousel{
 	grid-area: carousel;
+	overflow: hidden;
 }
 .carousel-slide{
 	display: flex;
 	width: 100%;
 	height: 550px;
-	overflow: hidden;
-
 }
 .carousel-slide img{
-	height: 550px;
 	z-index: 1; 
-	display: block;
+	/*width: 100%;  this is treating carousel-slide as parent instead of figure? why?*/
+}
+.carousel-slide figure{
+	width: 100%;
 }
 #leftButton{
 	grid-area: leftButton;
+	z-index: 3;
 }
 #rightButton{
 	grid-area: rightButton;
+	z-index: 3;
 }
 #carousel figcaption{
 	background-color: rgba(15, 27, 27, 0.7);  /*i.e. #0F1B1B same as header with adjusted opacity */
@@ -294,12 +305,15 @@ footer figcaption{
 }
 #codeWars{
 	grid-area: link1;
+	justify-self: right;
 }
 #freeCodeCamp{
 	grid-area: link2;
+	justify-self: center;
 }
 #gitHub{
 	grid-area: link3;
+	justify-self: left;
 }
 footer img{
 	width: 100px;
@@ -307,6 +321,7 @@ footer img{
 }
 footer #freeCodeCampLogo{
 	position: relative;
-	left: 12px; /*small repositioning adjustment was required since logo was not centering properly for some reason*/
+	left: 15px; 
+	/*small repositioning adjustment was required since logo was not centering properly for some reason
+	perhaps because images are automatically aligned to left as an inline element...figure out how to center images*/
 }
-
