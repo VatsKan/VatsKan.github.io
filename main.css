@@ -73,6 +73,7 @@ nav li{
 		
 }
 
+
 footer a{
 	color: var(--sectionColorA);
 	text-decoration: none;
@@ -86,6 +87,14 @@ footer figure:hover{
 	background-color: var(--sectionColorB);
 	border-radius: 20%;
 	padding: 20px;
+}
+footer a:hover{
+	color: var(--highlightColor); 
+	/*try to make this work better by 
+	changing html to make <a> wrap around figure, but 
+	then i think i will have to change a lot of CSS also i.e. grid areas 
+	etc. to make positioning work and also check the rest of the
+	related CSS is targeting the correct elements*/
 }
 
 
@@ -127,10 +136,12 @@ footer figure:hover{
 
 	display: grid;
 	grid-template-areas: 
-		". header header header ."
-		". explain explain explain ."; 
-	grid-template-columns: 1fr 2fr 2fr 2fr 1fr; 
-	grid-template-rows: auto auto 15px;
+		". header ."
+		". explain ."
+		". solution ."
+		". . .";
+	grid-template-columns: 1fr 60vw 1fr; 
+	grid-template-rows: auto auto auto 15px;
 	grid-column-gap: 10px;
 }
 footer{
@@ -292,9 +303,31 @@ button{
 }
 
 
-#favourite-katas p{
+#favourite-katas div{
 	grid-area: explain;
+	border-style: double;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
+#favourite-katas figure{
+	grid-area: solution;
+}
+#favourite-katas figcaption{
+	font-style: italic;
+	font-weight: bold;
+}
+#favourite-katas img{
+	width: 60vw;
+}
+#favourite-katas a{
+	color: 	hsl(183, 68%, 75%); /*sane as sectionColorA but slightly darker for visibility*/
+	text-decoration: none;
+}
+#favourite-katas a:hover{
+	color: var(--highlightColor); 
+	font-weight: bold;
+}
+
 
 
 footer figcaption{
