@@ -3,6 +3,7 @@ Vatsal Kanoria website application to Founders and Coders
 
 Improvements:
 - Bug: Fix sticky Nav so that it doesn't cover headings when links are clicked
+- Bug: relative positioning on chrome of para-bubbles is correct (but it is not the same if opened in safari!). 
 - Make responsive design better for small devices, and test on multiple devices.
 - Add zoom tool to the code in "Favourite Katas" section.
 - Add animations/background patterns
