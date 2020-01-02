@@ -15,13 +15,19 @@ const rightButton = document.querySelector("#rightButton");
 const noOfImages = carouselImg.length-2; //take away 2 since we clone 2 images. 
 
 let size = carouselFig[0].clientWidth;
-console.log(size);
-/*need to create a dynamic size variable which changes if the viewport size changes using addEventListener? i.e. to recalculate size if viewport size is adjusted/or refresh page*/
-/*need to find a way to adjust the image size to fit the and be centered in the container*/
 
 let counter=1; 
 carouselSlide.style.transform = "translateX(" + (-size * counter) + "px)"; 
 //Above makes starting point img 1 (instead of image 5 clone appearing before img 1 in html)
+
+
+//(note addEventListener is not supported on IE8 and below).
+window.addEventListener("resize", ()=>{ 
+//this event listener allows me to change the browser size and allow the image carousel to behave properly still.
+	size = carouselFig[0].clientWidth;
+	carouselSlide.style.transform = "translateX(" + (-size * counter) + "px)"; 
+	carouselSlide.style.transition = "none";
+});
 
 console.log(counter);
 
