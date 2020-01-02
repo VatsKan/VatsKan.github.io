@@ -95,9 +95,8 @@ footer figure:hover{
 	display: grid;
 	grid-template-areas: 
 		". leftButton carousel rightButton .";  
-	/*grid-template-columns: 0.4fr 0.5fr 6.2fr 0.5fr 0.4fr; */
 	grid-template-columns: 0.4fr 0.5fr 60vw 0.5fr 0.4fr; 
-	grid-template-rows: auto;
+	grid-template-rows: 33.5vw; 
 }
 #about-me{
 	background-color: var(--sectionColorB);
@@ -154,6 +153,8 @@ h2{
 	grid-area: header;
 	position: relative;
 	left: -25px;
+	/*padding-top: 50px; --attempt to fix nav-bar covering 
+	content, but not nice looking solution and not responsive*/
 } /*note that this code affects position of all h2 elements
 and in particular the 'grid-area: header' works in multiple sections as it is defined 
 in each of the sections by the grid-template-areas: "header" */
@@ -170,15 +171,11 @@ button{
 }
 .carousel-slide{
 	display: flex;
-	width: 100%;
-	height: 550px;
 }
 .carousel-slide img{
 	z-index: 1; 
-	/*width: 100%;  this is treating carousel-slide as parent instead of figure? why?*/
-}
-.carousel-slide figure{
-	width: 100%;
+	display: block;
+	width: 60vw; /*same as the grid size for this area*/ 
 }
 #leftButton{
 	grid-area: leftButton;
@@ -325,3 +322,5 @@ footer #freeCodeCampLogo{
 	/*small repositioning adjustment was required since logo was not centering properly for some reason
 	perhaps because images are automatically aligned to left as an inline element...figure out how to center images*/
 }
+
+
