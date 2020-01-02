@@ -2,9 +2,9 @@
 Vatsal Kanoria website application to Founders and Coders
 
 Improvements:
-- Make more responsive
-- Add zoom tool to the code in "Favourite Katas" section
 - Bug: Fix sticky Nav so that it doesn't cover headings when links are clicked
+- Make responsive design better for small devices, and test on multiple devices.
+- Add zoom tool to the code in "Favourite Katas" section.
 - Add animations/background patterns
 - Make buttons nicer
 - Make fonts nicer.
