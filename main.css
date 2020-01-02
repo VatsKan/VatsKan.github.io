@@ -107,6 +107,14 @@ footer a:hover{
 	grid-template-columns: 0.4fr 0.5fr 60vw 0.5fr 0.4fr; 
 	grid-template-rows: 33.5vw; 
 }
+@media (max-width: 700px) { 
+	#image-carousel{
+		grid-template-areas: 
+		"leftButton carousel rightButton";  
+		grid-template-columns: 0.5fr 80vw 0.5fr; 
+		grid-template-rows: 45vw;
+	}
+}
 #about-me{
 	background-color: var(--sectionColorB);
 	display: grid;
@@ -117,6 +125,13 @@ footer a:hover{
 	grid-template-columns: 1fr 4.5fr 1.5fr 1fr; 
 	grid-template-rows: auto auto 15px;
 	grid-column-gap: 10px;
+}
+@media (max-width: 700px) { 
+	#about-me{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 }
 #why-founders-and-coders{
 	background-color: var(--sectionColorA);
@@ -131,6 +146,13 @@ footer a:hover{
 
 	margin-bottom: -115px;
 }
+@media (max-width: 700px) { 
+	#why-founders-and-coders{
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0px;
+	}
+}
 #favourite-katas{
 	background-color: var(--sectionColorB);
 
@@ -143,6 +165,16 @@ footer a:hover{
 	grid-template-columns: 1fr 60vw 1fr; 
 	grid-template-rows: auto auto auto 15px;
 	grid-column-gap: 10px;
+}
+@media (max-width: 700px) { 
+	#favourite-katas{
+		grid-template-areas: 
+		"header"
+		"explain"
+		"solution"
+		" . ";
+		grid-template-columns: 100%; 
+	}
 }
 footer{
 	background-color: var(--footerColor);
@@ -158,6 +190,13 @@ footer{
 	grid-column-gap: 10px;
 	align-items: center;
 }
+@media (max-width: 700px) { 
+	footer{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
 
 
 h2{
@@ -169,7 +208,13 @@ h2{
 } /*note that this code affects position of all h2 elements
 and in particular the 'grid-area: header' works in multiple sections as it is defined 
 in each of the sections by the grid-template-areas: "header" */
-
+@media (max-width: 700px) { 
+	h2{
+		position: relative;
+		left: 0px;
+		text-align: center; 
+	}
+}
 
 button{
 	background-color: var(--sectionColorA);
@@ -187,6 +232,11 @@ button{
 	z-index: 1; 
 	display: block;
 	width: 60vw; /*same as the grid size for this area*/ 
+}
+@media (max-width: 700px) { 
+	.carousel-slide img{
+		width: 80vw; /*same as the grid size for this area*/ 
+	}
 }
 #leftButton{
 	grid-area: leftButton;
@@ -240,6 +290,14 @@ button{
 	grid-template-rows: auto auto auto;
 	justify-items: center;
 	align-items: top;
+}
+@media (max-width: 700px) { 
+	#bubbles{
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		bottom: 0px;
+	}
 }
 #bubbles p{
 	background-color: var(--bubbleColor);
@@ -301,6 +359,16 @@ button{
 .bubRight{
 	text-align: right;
 }
+@media (max-width: 700px) { 
+	#bub1, #bub2, #bub3, #bub4, #bub5, #bub6, #bub7{
+		position: relative;
+		left: 0px;
+		right: 0px;
+		top: 0px;
+		bottom: 0px;
+		text-align: center; 
+	}
+}
 
 
 #favourite-katas div{
@@ -318,6 +386,11 @@ button{
 }
 #favourite-katas img{
 	width: 60vw;
+}
+@media (max-width: 700px) { 
+	#favourite-katas img{
+		width: 100%;
+	}
 }
 #favourite-katas a{
 	color: 	hsl(183, 68%, 75%); /*sane as sectionColorA but slightly darker for visibility*/
@@ -355,5 +428,3 @@ footer #freeCodeCampLogo{
 	/*small repositioning adjustment was required since logo was not centering properly for some reason
 	perhaps because images are automatically aligned to left as an inline element...figure out how to center images*/
 }
-
-
